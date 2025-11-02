@@ -2,7 +2,7 @@
 import http.server
 import socketserver
 
-PORT = 8000
+from webserver_config import Config
 
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -12,6 +12,6 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(b"Hello, World!")
 
 def run_server():
-    with socketserver.TCPServer(("", PORT), MyHttpRequestHandler) as httpd:
-        print("serving at port", PORT)
+    with socketserver.TCPServer((Config.HOST, Config.PORT), MyHttpRequestHandler) as httpd:
+        print("serving at port", Config.PORT)
         httpd.serve_forever()
