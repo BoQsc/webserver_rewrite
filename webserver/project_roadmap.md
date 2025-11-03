@@ -76,7 +76,17 @@ This phase focuses on adding more advanced features and services to the server, 
 This phase focuses on building the features necessary for creating full-fledged web applications and preparing the server for production.
 
 -   [ ] **AsyncJSONStore (Database):**
-    -   [ ] Implement a high-performance, asynchronous JSON database with features like caching, locking, transactions, and indexing.
+    -   [ ] Implement a high-performance, asynchronous JSON database with:
+        -   **Unified API:** A single, high-level API integrating all database components.
+        -   **Atomic File Writes & WAL:** Crash-safe atomic file operations and Write-Ahead Logging for ACID compliance and durability.
+        -   **Multi-Level Caching:** L1 (in-memory), L2 (LRU), and L3 (memory-mapped files) with file modification time validation and size-based eviction.
+        -   **Advanced Locking:** Hierarchical (collection/record/field), read-write locks, deadlock detection and resolution, and fair queuing.
+        -   **Transaction Management:** Full ACID properties, WAL recovery, and checkpointing.
+        -   **Advanced Indexing:** Hash, B-Tree, and Full-Text indexes with automatic detection, persistence, and query optimization.
+        -   **Backup & Recovery:** Full, incremental, and differential backups with compression, encryption (optional), verification, and retention policies.
+        -   **Connection Pooling:** Manages thousands of concurrent connections with limits per total, per IP, and per user.
+        -   **Rate Limiting & Throttling:** Token bucket algorithm for rate limiting and resource-based throttling (CPU, memory, disk usage).
+        -   **Database Monitoring & Alerting:** Detailed metrics, performance profiling, alert rules, and health scoring for database operations.
 -   [ ] **Built-in Authentication:**
     -   [ ] Implement a secure, custom authentication system (e.g., PBKDF2+HMAC).
 -   [ ] **RESTful API Framework:**
