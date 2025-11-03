@@ -24,18 +24,18 @@ This phase focuses on building the essential, core components of the web server.
 -   [ ] **Core Server Engine:**
     -   [ ] Develop a basic, asynchronous HTTP/HTTPS server with SNI (Server Name Indication) support for handling multiple SSL certificates on a single IP address.
 -   [ ] **Structured Configuration:**
-    -   [ ] Implement a clean, dataclass-based configuration system with validation for network, SSL, DDNS, UPnP, web server, monitoring, and security settings.
+    -   [ ] Implement a clean, dataclass-based configuration system with validation for network, SSL, DDNS, UPnP, web server, monitoring, and security settings. This includes dynamic defaults, path resolution, and security-focused parameters like HSTS, rate limiting, and client request size/timeout limits.
 -   [ ] **Centralized Logging:**
-    -   [ ] Set up a comprehensive logging system with rotating file handlers for main, error, and access logs.
+    -   [ ] Set up a comprehensive logging system with rotating file handlers for main, error, and access logs, structured log formatters, and component-specific loggers for fine-grained control.
 -   [ ] **Standardized Error Handling:**
-    -   [ ] Implement a `StandardizedError` class with categories and severities, a central `ErrorHandler` for consistent logging, and robust error response generation. This will also include integration with `unicode_safety` for robust character encoding handling.
+    -   [ ] Implement a `StandardizedError` class with categories (e.g., NETWORK, FILE_IO) and severities (LOW, MEDIUM, HIGH, CRITICAL), a central `ErrorHandler` for consistent logging, robust error response generation (JSON), and integration with `unicode_safety` for robust character encoding handling. Includes a `safe_execute` utility for defensive programming.
 -   [ ] **Metrics Collection & Health Monitoring:**
     -   [ ] Implement a `MetricsCollector` for detailed request metrics (response times, error rates, status codes, path counts) and system resource metrics (CPU, memory, disk I/O, network I/O). This will also include a health status calculation based on metrics and thresholds.
     -   [ ] Develop an `InfrastructureStatusManager` for tracking component statuses, running health checks, and determining overall system health, including external IP discovery and alerting.
 -   [ ] **Port Conflict Detection:**
     -   [ ] Integrate utilities for detecting and reporting port conflicts, including process identification and suggestions for alternative ports.
 -   [ ] **Routing System:**
-    -   [ ] Implement a flexible, decorator-based routing system (e.g., `@app.route('/path')`).
+    -   [ ] Implement a flexible, decorator-based routing system (e.g., `@app.route('/path')`) with support for path parameter extraction and module-specific route registries.
 
 ---
 
@@ -46,13 +46,13 @@ This phase focuses on adding the most important features to the core server.
 -   [ ] **Middleware Pipeline:**
     -   [ ] Implement a middleware system for processing requests and responses.
 -   [ ] **Static File Serving:**
-    -   [ ] Add the ability to serve static files with caching and security considerations.
+    -   [ ] Add the ability to serve static files with caching and security considerations, leveraging a `RawResponse` utility for efficient content delivery.
 -   [ ] **HTML Processor (Server-Side Templating):**
-    -   [ ] Implement a templating engine for dynamic HTML generation, supporting variables, components, loops, and conditionals.
+    -   [ ] Implement a templating engine for dynamic HTML generation, supporting variables, components, loops, and conditionals, and integrating with modular page handlers.
 -   [ ] **WebSocket Support:**
     -   [ ] Implement an asyncio-based, threaded WebSocket server with WSS (secure WebSocket) support and application integration for handling real-time communication.
 -   [ ] **Hot-Reloading for Development:**
-    -   [ ] Implement a module watcher that automatically reloads changed Python files in development, enhancing developer experience.
+    -   [ ] Implement a module watcher that automatically reloads changed Python files in development, enhancing developer experience by invalidating `sys.modules` and decorator registries, and handling submodule and subdomain handler re-registration.
 
 ---
 
@@ -61,7 +61,7 @@ This phase focuses on adding the most important features to the core server.
 This phase focuses on adding more advanced features and services to the server, primarily through a plugin system.
 
 -   [ ] **Plugin System:**
-    -   [ ] Design and implement a plugin system that can dynamically discover and load new features and subdomains, including automatic registration of handlers and services.
+    -   [ ] Design and implement a plugin system that can dynamically discover and load new features and subdomains, including automatic registration of handlers and services, and support for dynamic content sources (e.g., `public_pages_handler`).
 -   [ ] **Subdomain Management:**
     -   [ ] Implement a mechanism for handling requests to different subdomains and routing them to specific handlers, integrated with the plugin system. This will include dynamic discovery of subdomains based on marker files and hot-reloading of subdomain configurations.
 -   [ ] **Core Service Plugins:**
@@ -90,7 +90,7 @@ This phase focuses on building the features necessary for creating full-fledged 
 -   [ ] **Built-in Authentication:**
     -   [ ] Implement a secure, custom authentication system (e.g., PBKDF2+HMAC).
 -   [ ] **RESTful API Framework:**
-    -   [ ] Build a framework on top of the core server that makes it easy to create RESTful APIs, leveraging the decorator-based routing system.
+    -   [ ] Build a framework on top of the core server that makes it easy to create RESTful APIs, leveraging the decorator-based routing system for clean API definitions and path parameter extraction.
 -   [ ] **Comprehensive Testing:**
     -   [ ] Write unit and integration tests for all features and plugins.
 -   [ ] **Documentation:**
