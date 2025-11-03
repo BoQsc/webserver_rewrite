@@ -50,7 +50,7 @@ This phase focuses on adding the most important features to the core server.
 -   [ ] **HTML Processor (Server-Side Templating):**
     -   [ ] Implement a templating engine for dynamic HTML generation, supporting variables, components, loops, and conditionals, and integrating with modular page handlers.
 -   [ ] **WebSocket Support:**
-    -   [ ] Implement an asyncio-based, threaded WebSocket server with WSS (secure WebSocket) support and application integration for handling real-time communication.
+    -   [ ] Implement an asyncio-based, threaded WebSocket server with WSS (secure WebSocket) support, connection management, application integration (e.g., for a WebChat application), and structured message handling.
 -   [ ] **Hot-Reloading for Development:**
     -   [ ] Implement a module watcher that automatically reloads changed Python files in development, enhancing developer experience by invalidating `sys.modules` and decorator registries, and handling submodule and subdomain handler re-registration.
 
