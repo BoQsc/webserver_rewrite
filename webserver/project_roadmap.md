@@ -30,10 +30,10 @@ This phase focuses on building the essential, core components of the web server.
 -   [ ] **Standardized Error Handling:**
     -   [ ] Implement a `StandardizedError` class with categories (e.g., NETWORK, FILE_IO) and severities (LOW, MEDIUM, HIGH, CRITICAL), a central `ErrorHandler` for consistent logging, robust error response generation (JSON), and integration with `unicode_safety` for robust character encoding handling. Includes a `safe_execute` utility for defensive programming.
 -   [ ] **Metrics Collection & Health Monitoring:**
-    -   [ ] Implement a `MetricsCollector` for detailed request metrics (response times, error rates, status codes, path counts) and system resource metrics (CPU, memory, disk I/O, network I/O). This will also include a health status calculation based on metrics and thresholds.
-    -   [ ] Develop an `InfrastructureStatusManager` for tracking component statuses, running health checks, and determining overall system health, including external IP discovery and alerting.
+    -   [ ] Implement a `MetricsCollector` for detailed request metrics (method, path, status, response time, client IP, user agent, sizes) and system resource metrics (CPU, memory, disk I/O, network I/O, active threads, open files). This includes time-window aggregation, response time histograms (P50, P95, P99), path normalization, and a health status calculation based on metrics and thresholds.
+    -   [ ] Develop an `InfrastructureStatusManager` for tracking component statuses, running configurable health checks, determining overall system health (healthy, warning, degraded), and including external/local IP discovery and alerting integration.
 -   [ ] **Port Conflict Detection:**
-    -   [ ] Integrate utilities for detecting and reporting port conflicts, including process identification and suggestions for alternative ports.
+    -   [ ] Integrate utilities for detecting and reporting port conflicts, including process identification (using `psutil` and `netstat`/`tasklist` fallback), actionable error messages, and suggestions for alternative ports.
 -   [ ] **Routing System:**
     -   [ ] Implement a flexible, decorator-based routing system (e.g., `@app.route('/path')`) with support for path parameter extraction and module-specific route registries.
 
@@ -65,9 +65,9 @@ This phase focuses on adding more advanced features and services to the server, 
 -   [ ] **Subdomain Management:**
     -   [ ] Implement a mechanism for handling requests to different subdomains and routing them to specific handlers, integrated with the plugin system. This will include dynamic discovery of subdomains based on marker files and hot-reloading of subdomain configurations.
 -   [ ] **Core Service Plugins:**
-    -   [ ] **DDNS Plugin:** Implement a Dynamic DNS update service (e.g., Namecheap integration) with reliable IP discovery, subdomain awareness, and a monitoring loop.
-    -   [ ] **UPnP Plugin:** Implement a UPnP port forwarding service with SSDP discovery, SOAP communication for port mapping, conflict resolution, and periodic verification.
-    -   [ ] **SSL Management Plugin:** Implement a comprehensive SSL certificate management service (e.g., Let's Encrypt integration) with automated renewal, ACME challenge coordination, rate limit handling, self-signed certificate fallback, and dynamic SSL config hot-reloading through marker files and DNS propagation checks.
+    -   [ ] **DDNS Plugin:** Implement a Dynamic DNS update service (e.g., Namecheap integration) with reliable external IP discovery (using multiple services), subdomain awareness (updating base domain and SSL-enabled subdomains), and a monitoring loop.
+    -   [ ] **UPnP Plugin:** Implement a UPnP port forwarding service with SSDP discovery, SOAP communication for port mapping, mapping verification and refresh, and conflict resolution.
+    -   [ ] **SSL Management Plugin:** Implement a comprehensive SSL certificate management service (e.g., Let's Encrypt integration) with automated renewal, ACME challenge coordination (HTTP-01), `cryptography` library integration for parsing, self-signed certificate fallback, dynamic SSL config hot-reloading through marker files, DNS propagation awareness (including attention files and retry mechanisms), per-domain failure tracking, ACME rate limit handling, certificate chain splitting, and HTTPS restart triggering.
 
 ---
 
