@@ -4,12 +4,12 @@ import socketserver
 
 from webserver_config import Config
 
+from webserver_routing import get_handler
+
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(b"Hello, World!")
+        handler = get_handler(self.path)
+        handler(self)
 
 def run_server():
     with socketserver.TCPServer((Config.HOST, Config.PORT), MyHttpRequestHandler) as httpd:
