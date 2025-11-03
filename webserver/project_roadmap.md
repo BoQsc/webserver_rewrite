@@ -50,7 +50,7 @@ This phase focuses on adding the most important features to the core server.
 -   [ ] **HTML Processor (Server-Side Templating):**
     -   [ ] Implement a templating engine for dynamic HTML generation, supporting variables, components, loops, and conditionals.
 -   [ ] **WebSocket Support:**
-    -   [ ] Add support for WebSockets to enable real-time communication.
+    -   [ ] Implement an asyncio-based, threaded WebSocket server with WSS (secure WebSocket) support and application integration for handling real-time communication.
 -   [ ] **Hot-Reloading for Development:**
     -   [ ] Implement a module watcher that automatically reloads changed Python files in development, enhancing developer experience.
 
@@ -61,13 +61,13 @@ This phase focuses on adding the most important features to the core server.
 This phase focuses on adding more advanced features and services to the server, primarily through a plugin system.
 
 -   [ ] **Plugin System:**
-    -   [ ] Design and implement a plugin system that can dynamically discover and load new features and subdomains, including automatic registration of handlers.
+    -   [ ] Design and implement a plugin system that can dynamically discover and load new features and subdomains, including automatic registration of handlers and services.
 -   [ ] **Subdomain Management:**
-    -   [ ] Implement a mechanism for handling requests to different subdomains and routing them to specific handlers, integrated with the plugin system.
+    -   [ ] Implement a mechanism for handling requests to different subdomains and routing them to specific handlers, integrated with the plugin system. This will include dynamic discovery of subdomains based on marker files and hot-reloading of subdomain configurations.
 -   [ ] **Core Service Plugins:**
-    -   [ ] **DDNS Plugin:** For Dynamic DNS updates.
-    -   [ ] **UPnP Plugin:** For automatic port forwarding.
-    -   [ ] **SSL Management Plugin:** For managing SSL certificates, including integration with Let's Encrypt for automatic renewal.
+    -   [ ] **DDNS Plugin:** Implement a Dynamic DNS update service (e.g., Namecheap integration) with reliable IP discovery, subdomain awareness, and a monitoring loop.
+    -   [ ] **UPnP Plugin:** Implement a UPnP port forwarding service with SSDP discovery, SOAP communication for port mapping, conflict resolution, and periodic verification.
+    -   [ ] **SSL Management Plugin:** Implement a comprehensive SSL certificate management service (e.g., Let's Encrypt integration) with automated renewal, ACME challenge coordination, rate limit handling, self-signed certificate fallback, and dynamic SSL config hot-reloading through marker files and DNS propagation checks.
 
 ---
 
@@ -80,12 +80,12 @@ This phase focuses on building the features necessary for creating full-fledged 
 -   [ ] **Built-in Authentication:**
     -   [ ] Implement a secure, custom authentication system (e.g., PBKDF2+HMAC).
 -   [ ] **RESTful API Framework:**
-    -   [ ] Build a framework on top of the core server that makes it easy to create RESTful APIs.
+    -   [ ] Build a framework on top of the core server that makes it easy to create RESTful APIs, leveraging the decorator-based routing system.
 -   [ ] **Comprehensive Testing:**
     -   [ ] Write unit and integration tests for all features and plugins.
 -   [ ] **Documentation:**
     -   [ ] Create detailed documentation for the server, its features, and the plugin system.
 -   [ ] **Deployment & Process Management:**
-    -   [ ] Provide scripts and best practices for deploying the server, including a watchdog for health monitoring and auto-recovery.
+    -   [ ] Provide scripts and best practices for deploying the server, including a watchdog for health monitoring, auto-recovery, and graceful shutdown mechanisms.
 
 ---
