@@ -61,8 +61,8 @@ This phase focuses on adding the most important features to the core server.
     -   [ ] Add the ability to serve static files with caching and security considerations, leveraging a `RawResponse` utility for efficient content delivery.
 -   [ ] **HTML Processor (Server-Side Templating):**
     -   [ ] Implement a templating engine for dynamic HTML generation, supporting variables, components, loops, and conditionals, and integrating with modular page handlers.
--   [ ] **WebSocket Support:**
-    -   [ ] Implement an asyncio-based, threaded WebSocket server with WSS (secure WebSocket) support, connection management, application integration (e.g., for a WebChat application), and structured message handling.
+-   [ ] **WebSocket Support (Deferred):**
+    -   [ ] This feature is deferred for the current rewrite. Implementing the WebSocket protocol without third-party libraries is a significant undertaking that conflicts with the project's emphasis on simplicity. If this feature becomes critical in the future, the recommended approach would be to make an exception for the `websockets` library rather than building a custom implementation.
 -   [ ] **Hot-Reloading for Development:**
     -   [ ] Implement a module watcher that automatically reloads changed Python files in development, enhancing developer experience by invalidating `sys.modules` and decorator registries, and handling submodule and subdomain handler re-registration.
 
