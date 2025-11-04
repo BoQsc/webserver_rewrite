@@ -4,6 +4,15 @@
 
 This project aims to build a feature-complete, modern Python web server that incorporates the best ideas from the old project while using a clean, maintainable, and scalable architecture.
 
+## Project Philosophy
+
+This rewrite operates under a specific philosophy for the current development cycle:
+
+*   **Strict Adherence to Standard Library:** The entire project will be implemented using only Python's standard library. No third-party libraries are to be used. This constraint forces a deep understanding of the standard library's capabilities and limitations.
+*   **Simplicity and Clarity as Core Values:** When faced with a design choice, the simpler and clearer solution will be preferred. This is to ensure the codebase is easy to understand, maintain, and build upon.
+
+These constraints apply to the whole project for this rewrite. The goal is to create a robust and well-understood foundation, which may be followed by a future rewrite in another programming language or with a different architecture to support a larger number of users.
+
 ## Guiding Principles
 
 *   **Modular Architecture:** A clean, maintainable structure of independent, reusable modules.
@@ -34,7 +43,7 @@ This phase focuses on building the essential, core components of the web server.
     -   [ ] Implement a `MetricsCollector` for detailed application-level metrics (method, path, status, response time, client IP, user agent, sizes). This includes time-window aggregation, response time histograms (P50, P95, P99), and path normalization.
     -   [ ] Develop an `InfrastructureStatusManager` for tracking component statuses, running configurable health checks (using standard library only), determining overall system health (healthy, warning, degraded), and including external/local IP discovery and alerting integration. This will focus on application-level and basic system status, excluding detailed resource usage (CPU, memory, disk I/O) due to the 'no third-party libraries' constraint.
 -   [ ] **Port Conflict Detection:**
-    -   [ ] Integrate utilities for detecting and reporting port conflicts, including process identification (using `psutil` and `netstat`/`tasklist` fallback), actionable error messages, and suggestions for alternative ports.
+    -   [ ] Integrate utilities for detecting and reporting port conflicts, including process identification (using standard library tools like `subprocess` to call `netstat` or `tasklist` as a fallback), actionable error messages, and suggestions for alternative ports.
 -   [ ] **Routing System:**
     -   [ ] Implement a flexible, decorator-based routing system (e.g., `@app.route('/path')`) with support for path parameter extraction and module-specific route registries.
 
@@ -100,3 +109,12 @@ This phase focuses on building the features necessary for creating full-fledged 
     -   [ ] Provide scripts and best practices for deploying the server, including a watchdog for health monitoring, auto-recovery, and graceful shutdown mechanisms.
 
 ---
+
+## Phase 5: Future Considerations
+
+This section outlines potential future directions for the project, beyond the scope of the current rewrite.
+
+*   **High-Performance Rewrite:** For supporting a significantly larger number of concurrent users, a future version of this project could be rewritten in a language like **Rust** or **Go**. This would provide a higher level of performance and more granular control over system resources.
+*   **Fully Asynchronous Architecture:** A future rewrite could adopt a fully asynchronous architecture from the ground up, using a framework like `aiohttp` (if the "no third-party" constraint is lifted) or a different language's ecosystem (e.g., Tokio for Rust, or Go's native concurrency).
+*   **Modern Frontend Framework:** The frontend could be rebuilt using a modern JavaScript framework like React, Vue, or Svelte, communicating with the web server via a RESTful or GraphQL API.
+*   **Containerization and Orchestration:** For easier deployment and scalability, the project could be containerized using Docker and managed with an orchestration tool like Kubernetes.
