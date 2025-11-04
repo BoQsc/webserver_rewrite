@@ -10,6 +10,7 @@ This rewrite operates under a specific philosophy for the current development cy
 
 *   **Rejection of Modern Frameworks:** We are intentionally not using existing modern web frameworks. The goal is to build our own foundational components from the ground up, using only the standard library, to create a system that is perfectly tailored to our needs and philosophy.
 *   **Strict Adherence to Standard Library:** The entire project will be implemented using only Python's standard library. No third-party libraries are to be used. This constraint forces a deep understanding of the standard library's capabilities and limitations.
+    *   **Exception:** The `cryptography` library is a permitted exception. It is considered essential for handling the complexities of SSL certificate management and is not feasible to replicate from scratch.
 *   **Simplicity and Clarity as Core Values:** When faced with a design choice, the simpler and clearer solution will be preferred. This is to ensure the codebase is easy to understand, maintain, and build upon.
 
 These constraints apply to the whole project for this rewrite. The goal is to create a robust and well-understood foundation, which may be followed by a future rewrite in another programming language or with a different architecture to support a larger number of users.
