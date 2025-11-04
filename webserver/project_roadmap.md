@@ -8,6 +8,7 @@ This project aims to build a feature-complete, modern Python web server that inc
 
 This rewrite operates under a specific philosophy for the current development cycle:
 
+*   **Rejection of Modern Frameworks:** We are intentionally not using existing modern web frameworks. The goal is to build our own foundational components from the ground up, using only the standard library, to create a system that is perfectly tailored to our needs and philosophy.
 *   **Strict Adherence to Standard Library:** The entire project will be implemented using only Python's standard library. No third-party libraries are to be used. This constraint forces a deep understanding of the standard library's capabilities and limitations.
 *   **Simplicity and Clarity as Core Values:** When faced with a design choice, the simpler and clearer solution will be preferred. This is to ensure the codebase is easy to understand, maintain, and build upon.
 
@@ -115,6 +116,6 @@ This phase focuses on building the features necessary for creating full-fledged 
 This section outlines potential future directions for the project, beyond the scope of the current rewrite.
 
 *   **High-Performance Rewrite:** For supporting a significantly larger number of concurrent users, a future version of this project could be rewritten in a language like **Rust** or **Go**. This would provide a higher level of performance and more granular control over system resources.
-*   **Fully Asynchronous Architecture:** A future rewrite could adopt a fully asynchronous architecture from the ground up, using a framework like `aiohttp` (if the "no third-party" constraint is lifted) or a different language's ecosystem (e.g., Tokio for Rust, or Go's native concurrency).
-*   **Modern Frontend Framework:** The frontend could be rebuilt using a modern JavaScript framework like React, Vue, or Svelte, communicating with the web server via a RESTful or GraphQL API.
+*   **Fully Asynchronous Architecture:** A future rewrite could adopt a fully asynchronous architecture from the ground up, potentially using a different language's ecosystem (e.g., Tokio for Rust, or Go's native concurrency).
+*   **API-Driven Frontend:** The frontend could be built as a separate, API-driven application, potentially using a modern JavaScript framework, which would communicate with the web server via a RESTful or GraphQL API.
 *   **Containerization and Orchestration:** For easier deployment and scalability, the project could be containerized using Docker and managed with an orchestration tool like Kubernetes.
