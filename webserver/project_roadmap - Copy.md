@@ -8,8 +8,7 @@ This project aims to build a feature-complete, modern Python web server that inc
 
 *   **Modular Architecture:** A clean, maintainable structure of independent, reusable modules.
 *   **Extensible via Plugins:** A well-defined plugin system for adding new features.
-*   **Asynchronous Services:** Use `asyncio` for background services and other non-HTTP tasks to ensure high performance and scalability.
-*   **Simplicity and Clarity:** Prioritize clear, straightforward implementations, using Python's standard library wherever possible to minimize complexity and avoid reinventing the wheel.
+*   **High Performance:** A fully asynchronous design using `asyncio`.
 *   **Developer-Friendly:** An intuitive and easy-to-use API, including features like decorator-based routing and hot-reloading.
 *   **Robust Observability:** Comprehensive logging, metrics, and status monitoring.
 *   **Production-Ready:** Focus on stability, error handling, and deployment utilities.
@@ -23,7 +22,7 @@ This phase focuses on building the essential, core components of the web server.
 -   [ ] **Project Scaffolding:**
     -   [ ] Set up a clean project structure with a `webserver` package.
 -   [ ] **Core Server Engine:**
-    -   [ ] Develop a core server engine using Python's standard `http.server` and `socketserver` for simplicity and clarity. This provides a stable, synchronous, multi-threaded foundation for HTTP/HTTPS serving with SNI support.
+    -   [ ] Develop a basic, asynchronous HTTP/HTTPS server with SNI (Server Name Indication) support for handling multiple SSL certificates on a single IP address.
 -   [ ] **Structured Configuration:**
     -   [ ] Implement a clean, dataclass-based configuration system with validation for network, SSL, DDNS, UPnP, web server, monitoring, and security settings. This includes dynamic defaults, path resolution, and security-focused parameters like HSTS, rate limiting, and client request size/timeout limits.
 -   [ ] **Centralized Logging:**
