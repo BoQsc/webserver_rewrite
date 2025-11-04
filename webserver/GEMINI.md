@@ -1,4 +1,5 @@
 Our main goal is Clarity/Simplicity: Very high.
+Prioritizing "simplicity and clarity"
 
 Always write and update webserver/project_roadmap.md and keep track. 
 Do not look at .md files in the old project. .md in old project
